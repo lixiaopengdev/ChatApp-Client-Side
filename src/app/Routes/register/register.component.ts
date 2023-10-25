@@ -34,10 +34,9 @@ export class RegisterComponent implements OnInit {
   registerCountries = JSON.parse(this.country.countriesString);
   // form group
   registerForm = new FormGroup({
-    firstName: new FormControl('', [Validators.required, Validators.pattern('[a-zA-z ]*'), Validators.minLength(3)]),
-    lastName: new FormControl('', [Validators.required, Validators.pattern('[a-zA-z ]*'), Validators.minLength(3)]),
-    email: new FormControl('', [Validators.required, Validators.email, Validators.pattern('[a-zA-Z @.]*')]),
-    country: new FormControl('', [Validators.required, Validators.maxLength(11)]),
+    userName: new FormControl('', [Validators.required, Validators.pattern('[a-zA-z ]*'), Validators.minLength(3)]),
+    phone: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    city: new FormControl('', [Validators.required, Validators.maxLength(11)]),
     age: new FormControl('', [Validators.required, Validators.pattern('[0-9]{1,2}'), Validators.maxLength(2)]),
     gender: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
@@ -45,9 +44,8 @@ export class RegisterComponent implements OnInit {
   // interfaces
   signUpData: SignUp = {
     age: null,
-    email: '',
-    firstName: '',
-    lastName: '',
+    phone: '',
+    userName: '',
     gender: '',
     password: '',
     country: '',
@@ -78,16 +76,15 @@ export class RegisterComponent implements OnInit {
   RegisterUser(): void {
     this.sendRequest = true;
     this.signUpData.age = this.registerForm.controls.age.value;
-    this.signUpData.email = this.registerForm.controls.email.value;
-    this.signUpData.firstName = this.registerForm.controls.firstName.value;
-    this.signUpData.lastName = this.registerForm.controls.lastName.value;
+    this.signUpData.phone = this.registerForm.controls.phone.value;
+    this.signUpData.userName = this.registerForm.controls.userName.value;
     this.signUpData.gender = this.registerForm.controls.gender.value;
     this.signUpData.password = this.registerForm.controls.password.value;
-    this.signUpData.country = this.registerForm.controls.country.value;
+    this.signUpData.city = this.registerForm.controls.city.value;
 
     this.auth.registerAuth(this.signUpData).subscribe(res => {
       this.sendRequest = false;
-      this.alertSuccess(`${res.message}`);
+      this.alertSuccess(`${res.data.message}`);
       this.registerForm.reset();
       setTimeout(() => {
         if (localStorage.getItem('chatsapp-token') === null) {

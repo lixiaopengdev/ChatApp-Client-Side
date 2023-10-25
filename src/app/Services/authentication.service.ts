@@ -14,12 +14,12 @@ export class AuthenticationService {
 
   // ******** LOGIN ********* //
   loginAuth(data): Observable<any> {
-    return this.http.post(`${environment.apiWithUrl}/auth/signin`, data);
+    return this.http.post(`${environment.apiWithUrl}/api/v1/auth/signin`, data);
   }
 
   // ******** REGISTER ********* //
   registerAuth(data): Observable<any> {
-    return this.http.post(`${environment.apiWithUrl}/auth/signup`, data);
+    return this.http.post(`${environment.apiWithUrl}/api/v1/auth/signup`, data);
   }
 
   saveToken(token): void {

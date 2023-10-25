@@ -106,8 +106,8 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
         } else {
             this.socket.emit('sendGroupMessage', {
                 messageData: {
-                    firstName: this.socket.userContainer.firstName,
-                    lastName: this.socket.userContainer.lastName,
+                    userName: this.socket.userContainer.userName,
+                    phone: this.socket.userContainer.phone,
                     message: this.messageText
                 }, userToken: this.socket.token
             });
@@ -120,7 +120,7 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
             this.toggleArray = false;
         } else {
             this.toggleArray = true;
-            this.filteredContainer = this.groupFriendsContainer.filter(data => `${data.firstName.toLowerCase()} ${data.lastName.toLowerCase()}`.includes(this.searchText.toLowerCase()));
+            this.filteredContainer = this.groupFriendsContainer.filter(data => `${data.userName.toLowerCase()} ${data.phone.toLowerCase()}`.includes(this.searchText.toLowerCase()));
         }
     }
 
@@ -183,7 +183,7 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
     kickMembber(member): void {
         Swal.fire({
             title: 'Are you sure?',
-            text: `Would you like to kick ${member.firstName}?`,
+            text: `Would you like to kick ${member.userName}?`,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',

@@ -15,7 +15,7 @@ export class UserDetailsService {
   // ********* GET USER AFTER LOGIN ********** //
 
   getUserAfterLogin(): Observable<any> {
-    return this.http.get(`${environment.apiWithUrl}/users/userAfterLogin`, {
+    return this.http.get(`${environment.apiWithUrl}/api/v1/users/userAfterLogin`, {
       headers: {
         Authorization: `Bearer ${this.token}`
       }
@@ -23,7 +23,7 @@ export class UserDetailsService {
   }
   // ********* DELETE NOTIFICATION ********** //
   deleteNotification(id): Observable<any> {
-    return this.http.delete(`${environment.apiWithUrl}/users/removeNotification/${id}`, {
+    return this.http.delete(`${environment.apiWithUrl}/api/v1/users/removeNotification/${id}`, {
       headers: {
         Authorization: `Bearer ${this.token}`
       }

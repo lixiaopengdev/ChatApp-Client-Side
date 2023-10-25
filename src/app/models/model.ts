@@ -10,18 +10,18 @@ export interface ChatDetails {
 // *************** LOGIN PART ***************** //
 
 export interface Login {
-    email?: string;
+    phone?: string;
     password?: string;
 }
 
 // *************** REGISTER PART ***************** //
 
 export interface SignUp {
-    firstName?: string;
-    lastName?: string;
+    userName?: string;
+    phone?: string;
     age?: number;
     gender?: string;
-    email?: string;
+    city?: string;
     password?: string;
     country?: string;
 }
@@ -32,12 +32,12 @@ export interface SignUp {
 
 export interface User {
     _id?: string;
-    firstName?: string;
-    lastName?: string;
+    userName?: string;
+    phone?: string;
     age?: number;
-    country?: string;
+    city?: string;
     gender?: string;
-    bio?: string;
+    introduction?:string
     online?: boolean;
     friendRequests?: FriendRequests[];
     notifications?: Notifications[];
@@ -56,13 +56,12 @@ export interface Notifications {
 
 export interface FromUser {
     _id?: string;
-    firstName?: string;
-    lastName?: string;
+    userName?: string;
+    phone?: string;
     age?: number;
-    country?: string;
+    city?: string;
     gender?: string;
-    email?: string;
-    bio?: string;
+    introduction?:string;
     online?: boolean;
     img?: Img;
 }
@@ -82,12 +81,12 @@ export interface FriendRequests {
 
 export interface Friends {
     _id?: string;
-    firstName?: string;
-    lastName?: string;
+    userName?: string;
+    phone?: string;
     age?: number;
-    country?: string;
+    city?: string;
     gender?: string;
-    bio?: string;
+    in?: string;
     online?: boolean;
     friends?: [];
     matualFriends?: MutualFriends[];
@@ -96,12 +95,13 @@ export interface Friends {
 
 export interface MutualFriends {
     _id?: string;
-    firstName?: string;
-    lastName?: string;
+    userName?: string;
+    phone?: string;
     age?: number;
-    country?: string;
+    city?: string;
     gender?: string;
     bio?: string;
+    introduction?:string;
     online?: string;
     friends?: [];
     img?: Img;
@@ -116,10 +116,10 @@ export interface Accept {
 
 export interface People {
     _id?: string;
-    firstName?: string;
-    lastName?: string;
+    userName?: string;
+    phone?: string;
     age?: number;
-    country?: string;
+    city?: string;
     gender?: string;
     sent?: boolean;
     mutualFriends?: MutualFriends[];
@@ -131,12 +131,13 @@ export interface People {
 
 export interface VisitedProfile {
     _id?: string;
-    firstName?: string;
-    lastName?: string;
+    userName?: string;
+    phone?: string;
     age?: number;
-    country?: string;
+    city?: string;
     gender?: string;
     bio?: string;
+    introduction?:string;
     online?: boolean;
     img?: Img;
     userFriends?: ProfileFriends[];
@@ -146,12 +147,13 @@ export interface VisitedProfile {
 
 export interface ProfileFriends {
     _id?: string;
-    firstName?: string;
-    lastName?: string;
+    userName?: string;
+    phone?: string;
     age?: number;
-    country?: string;
+    city?: string;
     gender?: string;
     bio?: string;
+    introduction?:string;
     online?: string;
     img?: Img;
 }
@@ -203,13 +205,13 @@ export interface User {
     _id?: string;
     age?: number;
     bio?: string;
-    country?: string;
-    email?: string;
-    firstName?: string;
+    introduction?:string;
+    city?: string;
+    phone?: string;
+    userName?: string;
     gender?: string;
     img?: Img;
     joinedAt?: string;
-    lastName?: string;
 }
 
 export interface IsTyping {
@@ -235,8 +237,8 @@ export interface AllGroups {
 
 export interface GroupFriends {
     _id?: string;
-    firstName?: string;
-    lastName?: string;
+    userName?: string;
+    phone?: string;
     online?: boolean;
     img?: Img;
 }
@@ -264,9 +266,9 @@ export interface GroupHistory {
 }
 export interface GroupMembers {
     _id?: string;
-    firstName?: string;
+    userName?: string;
     img?: Img;
-    lastName?: string;
+    phone?: string;
     online?: boolean;
 }
 

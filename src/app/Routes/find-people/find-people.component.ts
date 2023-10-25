@@ -125,7 +125,7 @@ export class FindPeopleComponent implements OnInit, OnDestroy {
       this.toggleArraies = false;
     } else {
       this.toggleArraies = true;
-      this.filterdPeople = this.peopleContainer.filter((filtered) => `${filtered.firstName.toLowerCase()} ${filtered.lastName.toLowerCase()}`.includes(this.searchedText.toLowerCase()));
+      this.filterdPeople = this.peopleContainer.filter((filtered) => `${filtered.userName.toLowerCase()} ${filtered.phone.toLowerCase()}`.includes(this.searchedText.toLowerCase()));
       console.log(this.filterdPeople);
     }
   }

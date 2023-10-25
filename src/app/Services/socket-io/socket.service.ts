@@ -18,7 +18,9 @@ export class SocketService {
   emptyNotificationsAlert = false;
   emptyChatsAlert = false;
   isOnline: boolean;
-  readonly url: string = 'https://chats--app.herokuapp.com/';
+  readonly url: string = 'http://localhost:1502/';
+  // readonly url:string = 'http://192.168.50.177:1502/'
+
   token = localStorage.getItem('chatsapp-token');
   // arraies
   userContainer: User = {};
@@ -86,6 +88,7 @@ export class SocketService {
   listenToOnlineAndOffline(): void {
     this.listen('changeActivityStatus').subscribe(res => {
       console.log('chat details listen');
+      console.log(res)
       if (this.userContainer?._id !== res.userId) {
         this.isOnline = res.online;
       }
@@ -131,6 +134,7 @@ export class SocketService {
 
   listenToMyChats(): void {
     this.listen('userChats').subscribe(res => {
+      console.log('userChats')
       if (this.userContainer._id === res['userId']) {
         this.allChatListContainer = res;
         if (this.allChatListContainer.userChats.length === 0) {
@@ -145,10 +149,13 @@ export class SocketService {
 
   listenToChatDetails(): void {
     this.listen('chatRoomIsJoined').subscribe(res => {
+      console.log(`chatRoomIsJoined=`)
+      console.log(`userContainer._id = ${this.userContainer._id}`)
       if (this.userContainer._id === res['to']) {
+        console.log('isJoined')
+        console.log(res)  
         this.chatRoomContainer = res;
         this.checkWhoImI();
-        console.log(this.chatRoomContainer);
         setTimeout(() => {
           this.getDownWhenEnter();
         }, 200);
@@ -163,6 +170,7 @@ export class SocketService {
         this.emit('messageIsSeen', {messageId: res['_id']});
       }
       this.getDown();
+      console.log('privateMessageBack')
       console.log(res);
     });
   }
@@ -170,6 +178,8 @@ export class SocketService {
 
   listenToSeenMessage(): void {
     this.listen('seen').subscribe(messageId => {
+      console.log('seen')
+      console.log(messageId)
       this.chatRoomContainer?.chatRoom?.chatHistory.forEach(message => {
         if (message._id === messageId) {
           message.seen = true;
@@ -232,7 +242,7 @@ export class SocketService {
 
   getUserAfterLoggedIn(): void {
     this.user.getUserAfterLogin().subscribe(res => {
-      this.userContainer = res.user;
+      this.userContainer = res.data.user;
       if (this.userContainer.friendRequests.length === 0) {
         this.emptyFriendsAlert = false;
       } else {

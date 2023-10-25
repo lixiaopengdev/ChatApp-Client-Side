@@ -19,8 +19,8 @@
             </div>
             <div class="friends-chat">
                 <div class="friend-name">
-                    <span class="f-name" *ngIf="socket.allChatListContainer.userId === list.firstUser._id">{{list.secondUser.firstName | titlecase}} {{list.secondUser.lastName | titlecase}}</span>
-                    <span class="f-name" *ngIf="socket.allChatListContainer.userId === list.secondUser._id">{{list.firstUser.firstName | titlecase}} {{list.firstUser.lastName | titlecase}}</span>
+                    <span class="f-name" *ngIf="socket.allChatListContainer.userId === list.firstUser._id">{{list.secondUser.userName | titlecase}} {{list.secondUser.phone | titlecase}}</span>
+                    <span class="f-name" *ngIf="socket.allChatListContainer.userId === list.secondUser._id">{{list.firstUser.userName | titlecase}} {{list.firstUser.phone | titlecase}}</span>
                     <span class="f-time">{{list.lastMessageDate | date:'shortTime'}}</span>
                 </div>
                 <div class="friend-message">

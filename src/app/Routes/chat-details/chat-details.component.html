@@ -9,8 +9,8 @@
                 </div>
                 <div class="user-name-online">
                     <div class="u-name">
-                        <span class="u-n" *ngIf="socket?.userContainer?._id === socket?.chatRoomContainer?.chatRoom?.firstUser?._id">{{socket?.chatRoomContainer?.chatRoom?.secondUser?.firstName | titlecase}} {{socket?.chatRoomContainer?.chatRoom?.secondUser?.lastName | titlecase}}</span>
-                        <span class="u-n" *ngIf="socket?.userContainer?._id === socket?.chatRoomContainer?.chatRoom?.secondUser?._id">{{socket?.chatRoomContainer?.chatRoom?.firstUser?.firstName | titlecase}} {{socket?.chatRoomContainer?.chatRoom?.firstUser?.lastName | titlecase}}</span>
+                        <span class="u-n" *ngIf="socket?.userContainer?._id === socket?.chatRoomContainer?.chatRoom?.firstUser?._id">{{socket?.chatRoomContainer?.chatRoom?.secondUser?.userName | titlecase}} {{socket?.chatRoomContainer?.chatRoom?.secondUser?.phone | titlecase}}</span>
+                        <span class="u-n" *ngIf="socket?.userContainer?._id === socket?.chatRoomContainer?.chatRoom?.secondUser?._id">{{socket?.chatRoomContainer?.chatRoom?.firstUser?.userName | titlecase}} {{socket?.chatRoomContainer?.chatRoom?.firstUser?.phone | titlecase}}</span>
                         <span *ngIf="socket.isOnline" class="active"></span>
                     </div>
                     <div *ngIf="isTypingInterface.isTyping" class="u-status"><span class="user-status">typing...</span></div>
@@ -25,7 +25,7 @@
         <div class="middle-box">
             <div *ngFor="let message of socket?.chatRoomContainer?.chatRoom?.chatHistory" [ngClass]="socket?.userContainer?._id === message?.fromUser?._id ? 'current-user' : 'user-friend'">
                 <div class="current-details">
-                    <span class="name-of-user">{{message?.fromUser?.firstName}} {{message?.fromUser?.lastName}} </span>
+                    <span class="name-of-user">{{message?.fromUser?.userName}} {{message?.fromUser?.userName}} </span>
                     <span class="date-of-message">{{message?.date | date}}</span>
                 </div>
                 <div class="current-message">

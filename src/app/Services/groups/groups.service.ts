@@ -14,7 +14,7 @@ export class GroupsService {
 
     // ************** GET ALL GROUPS ************** //
     getAllGroups(): Observable<any> {
-        return this.http.get(`${environment.apiWithUrl}/groups/userGroups`, {
+        return this.http.get(`${environment.apiWithUrl}/api/v1/groups/userGroups`, {
             headers: {
                 Authorization: `Bearer ${this.token}`
             }
@@ -23,7 +23,7 @@ export class GroupsService {
 
     // ************** CREAT A GROUP ************** //
     createGroup(data): Observable<any> {
-        return this.http.post(`${environment.apiWithUrl}/groups/createGroup`, data, {
+        return this.http.post(`${environment.apiWithUrl}/api/v1/groups/createGroup`, data, {
             headers: {
                 Authorization: `Bearer ${this.token}`
             }
@@ -32,7 +32,7 @@ export class GroupsService {
 
     // ************** DELETE A GROUP ************** //
     deleteGroup(id): Observable<any> {
-        return this.http.delete(`${environment.apiWithUrl}/groups/deleteGroup/${id}`, {
+        return this.http.delete(`${environment.apiWithUrl}/api/v1/groups/deleteGroup/${id}`, {
             headers: {
                 Authorization: `Bearer ${this.token}`
             }
@@ -41,7 +41,7 @@ export class GroupsService {
 
     // ************** LEAVE A GROUP ************** //
     leaveGroup(id): Observable<any> {
-        return this.http.patch(`${environment.apiWithUrl}/groups/leaveGroup/${id}`, {}, {
+        return this.http.patch(`${environment.apiWithUrl}/api/v1/groups/leaveGroup/${id}`, {}, {
             headers: {
                 Authorization: `Bearer ${this.token}`
             }
@@ -50,7 +50,7 @@ export class GroupsService {
 
     // ************** KICK MEMBER FROM A GROUP ************** //
     kickMemberFromGroup(data): Observable<any> {
-        return this.http.patch(`${environment.apiWithUrl}/groups/kickMember`, data, {
+        return this.http.patch(`${environment.apiWithUrl}/api/v1/groups/kickMember`, data, {
             headers: {
                 Authorization: `Bearer ${this.token}`
             }
@@ -58,7 +58,7 @@ export class GroupsService {
     }
     // ************** GET FRIEND LIST FOR A GROUP ************** //
     getFriendListForGroup(adminID): Observable<any> {
-        return this.http.get(`${environment.apiWithUrl}/groups/friendsForGroup/${adminID}`, {
+        return this.http.get(`${environment.apiWithUrl}/api/v1/groups/friendsForGroup/${adminID}`, {
             headers: {
                 Authorization: `Bearer ${this.token}`
             }
@@ -67,7 +67,7 @@ export class GroupsService {
 
     // ************** ADD MEMBER TO A GROUP ************** //
     addMember(data: object): Observable<any> {
-        return this.http.patch(`${environment.apiWithUrl}/groups/addMember`, data, {
+        return this.http.patch(`${environment.apiWithUrl}/api/v1/groups/addMember`, data, {
             headers: {
                 Authorization: `Bearer ${this.token}`
             }

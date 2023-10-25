@@ -33,12 +33,12 @@ export class LoginComponent implements OnInit {
   sendRequest = false;
   // form group
   loginForm = new FormGroup({
-    userName: new FormControl('', [Validators.required, Validators.pattern('[a-zA-z @.]*'), Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)])
+    userName: new FormControl(''),
+    password: new FormControl('')
   });
   // interfaces
   loginData: Login = {
-    email: '',
+    phone: '',
     password: ''
   };
   // Sweet alert
@@ -60,15 +60,15 @@ export class LoginComponent implements OnInit {
 
   loginThisUser(): void {
     this.sendRequest = true;
-    this.loginData.email = this.loginForm.controls.userName.value;
+    this.loginData.phone = this.loginForm.controls.userName.value;
     this.loginData.password = this.loginForm.controls.password.value;
-
+    
     this.login.loginAuth(this.loginData).subscribe(res => {
       this.sendRequest = false;
       this.loginForm.reset();
-      this.alertSuccess(`${res.message}`);
+      this.alertSuccess(`${res.data.message}`);
       setTimeout(() => {
-        this.login.saveToken(res.token);
+        this.login.saveToken(res.data.token);
         window.location.reload();
       }, 2500);
     }, err => {

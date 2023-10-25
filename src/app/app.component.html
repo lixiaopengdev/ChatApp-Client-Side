@@ -16,9 +16,9 @@
                              alt="user-profile-image">
                     </a>
                     <div class="online-part">
-                        <div class="user-name mx-2">{{socket?.userContainer?.firstName | titlecase}}<span
+                        <div class="user-name mx-2">{{socket?.userContainer?.userName | titlecase}}<span
                                 class="user-acitve"></span></div>
-                        <div class="status mx-2">{{socket?.userContainer?.country | titlecase}}</div>
+                        <div class="status mx-2">{{socket?.userContainer?.city | titlecase}}</div>
                     </div>
                 </div>
                 <div class="nav-middle">
@@ -60,9 +60,9 @@
                                          alt="friend-request-img">
                                     <div class="body-left">
                                         <div class="request-name">
-                                            <span>{{request.fromUser.firstName | titlecase}} {{request.fromUser.lastName | titlecase}}</span><span
+                                            <span>{{request.fromUser.userName | titlecase}} {{request.fromUser.phone | titlecase}}</span><span
                                                 class="user-acitve"></span></div>
-                                        <div class="request-country">{{request.fromUser.country}}
+                                        <div class="request-country">{{request.fromUser.city}}
                                             , {{request.fromUser.gender | titlecase}}</div>
                                         <div class="request-time"><span>{{request.date | date:'shortTime'}}</span> <span
                                                 class="mx-2">{{request.date | date:'shortDate'}}</span></div>
@@ -107,7 +107,7 @@
                                          alt="friend-request-img">
                                     <div class="body-left">
                                         <div class="request-name">
-                                            <span>{{request?.fromUser?.firstName | titlecase}} {{request?.fromUser?.lastName | titlecase}}</span>
+                                            <span>{{request?.fromUser?.userName | titlecase}} {{request?.fromUser?.phone | titlecase}}</span>
                                         </div>
                                         <div class="request-country">{{request.message}}</div>
                                         <div class="request-time"><span>{{request.data | date:'shortTime'}} </span>
@@ -173,7 +173,7 @@
                          alt="user-profile-image">
                 </a>
                 <div class="user-right ml-2">
-                    <div class="user-name"><span>{{socket.userContainer.firstName | titlecase}}</span></div>
+                    <div class="user-name"><span>{{socket.userContainer.userName | titlecase}}</span></div>
                     <div class="user-bio"><span>{{socket.userContainer.bio}}</span></div>
                 </div>
             </div>

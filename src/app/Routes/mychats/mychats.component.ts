@@ -67,12 +67,14 @@ export class MychatsComponent implements OnInit {
             this.toggleArray = false;
         } else {
             this.toggleArray = true;
-            this.filteredArray = this.socket.allChatListContainer.userChats.filter((filtered) => this.socket.userContainer._id === filtered.firstUser._id ? `${filtered.secondUser.firstName} ${filtered.secondUser.lastName}`.toLowerCase().includes(this.searchText) : `${filtered.firstUser.firstName} ${filtered.firstUser.lastName}`.toLowerCase().includes(this.searchText));
+            this.filteredArray = this.socket.allChatListContainer.userChats.filter((filtered) => this.socket.userContainer._id === filtered.firstUser._id ? `${filtered.secondUser.userName} ${filtered.secondUser.phone}`.toLowerCase().includes(this.searchText) : `${filtered.firstUser.userName} ${filtered.firstUser.phone}`.toLowerCase().includes(this.searchText));
         }
     }
 
     listenToNewMessages(): void {
         this.socket.listen('privateMessageBackFromOutside').subscribe(res => {
+            console.log('privateMessageBackFromOutside')
+            console.log(res)
             if (this.socket.userContainer._id === res) {
                 this.emitMyChats();
             }
@@ -81,6 +83,8 @@ export class MychatsComponent implements OnInit {
 
     listenToUnSeenMessages(): void {
         this.socket.listen('setUnseenMessagesToTrue').subscribe(res => {
+            console.log('setUnseenMessagesToTrue')
+            console.log(res)
             if (res['to'] === this.socket.userContainer._id) {
                 this.socket.allChatListContainer.userChats.forEach(chat => {
                     if (chat._id === res['room']) {

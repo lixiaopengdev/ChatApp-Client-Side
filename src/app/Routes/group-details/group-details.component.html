@@ -29,7 +29,7 @@
         <div class="middle-box">
             <div *ngFor="let message of socket?.groupData?.group?.chatHistory" [ngClass]="socket?.userContainer?._id === message?.fromUser._id ? 'current-user' : 'user-friend'">
                 <div class="current-details">
-                    <span class="name-of-user">{{message?.fromUser?.firstName | titlecase}} {{message?.fromUser?.lastName | titlecase}}</span>
+                    <span class="name-of-user">{{message?.fromUser?.userName | titlecase}} {{message?.fromUser?.phone | titlecase}}</span>
                     <span class="date-of-message mx-1">{{message.data | date}}</span>
                 </div>
                 <div class="current-message">
@@ -80,7 +80,7 @@
                               *ngFor="let selected of selectedContainer;trackBy:trackByFn;let i = index" @scaleIn>
                             <img [src]="selected?.img === null ? 'assets/user.png' : selected?.img?.url"
                                  alt="selected-friend-img">
-                            <span class="memeber-name">{{selected?.firstName | titlecase}}</span>
+                            <span class="memeber-name">{{selected?.userName | titlecase}}</span>
                             <span class="cancel-member" (click)="returnMember(selected, i)"><i
                                     class="fas fa-times cancel-member-icon"></i></span>
                         </span>
@@ -91,7 +91,7 @@
                             <div class="add-left">
                                 <img [src]="friend?.img === null ? 'assets/user.png' : friend?.img?.url" class="friend-img"
                                      alt="member-img">
-                                <span class="member-name-modal">{{friend.firstName | titlecase}} {{friend.lastName | titlecase}}</span>
+                                <span class="member-name-modal">{{friend.userName | titlecase}} {{friend.phone | titlecase}}</span>
                             </div>
                             <div class="add-right">
                                 <i class="fa fa-plus text-light" aria-hidden="true"></i>
@@ -132,7 +132,7 @@
                                 <img [src]="member.img === null ? 'assets/user.png' : member.img.url" class="friend-img"
                                      alt="member-img">
                                 <div>
-                                    <div class="member-name-modal">{{member.firstName | titlecase}} {{member.lastName | titlecase}}</div>
+                                    <div class="member-name-modal">{{member.userName | titlecase}} {{member.phone | titlecase}}</div>
                                     <span class="text-light mt-2">{{socket?.groupData?.group?.admin === member?._id ? 'Admin' : 'Member'}}</span>
                                 </div>
                             </div>

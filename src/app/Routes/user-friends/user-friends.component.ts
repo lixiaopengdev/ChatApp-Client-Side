@@ -100,8 +100,8 @@ export class UserFriendsComponent implements OnInit, OnDestroy {
         this.friends.showLoader();
         this.friendsSub = this.friends.getUserFriends().subscribe(res => {
             this.friends.hideLoader();
-            this.friendsContainer = res.friends;
-            if (res.friends.length === 0) {
+            this.friendsContainer = res.data.friends;
+            if (res.data.friends.length === 0) {
                 this.emptyAlert = true;
             } else {
                 this.emptyAlert = false;
@@ -110,10 +110,10 @@ export class UserFriendsComponent implements OnInit, OnDestroy {
         });
     }
 
-    deleteFriend(id, firstName, lastName): void {
+    deleteFriend(id, userName, phone): void {
         Swal.fire({
             title: 'Are you sure?',
-            text: `Would you like to delete ${firstName} ${lastName}!`,
+            text: `Would you like to delete ${userName} ${phone}!`,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -145,7 +145,7 @@ export class UserFriendsComponent implements OnInit, OnDestroy {
             this.toggleArraies = false;
         } else {
             this.toggleArraies = true;
-            this.filteredFriends = this.friendsContainer.filter((filtered) => `${filtered.firstName.toLowerCase()} ${filtered.lastName.toLowerCase()}`.includes(this.searchedText.toLowerCase()));
+            this.filteredFriends = this.friendsContainer.filter((filtered) => `${filtered.userName.toLowerCase()} ${filtered.phone.toLowerCase()}`.includes(this.searchedText.toLowerCase()));
             console.log(this.filteredFriends);
         }
     }

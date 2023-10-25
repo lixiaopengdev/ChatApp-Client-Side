@@ -15,7 +15,7 @@
                             <img *ngIf="!pple?.img?.url" class="friend-img" src="assets/user.png" alt="friend-image">
                             <img *ngIf="pple?.img?.url" class="friend-img" [src]="pple?.img?.url" alt="friend-image">
                             <div class="friend-caption">
-                                <div class="caption-text"><span>{{pple.firstName | titlecase}} {{pple.lastName | titlecase}}</span></div>
+                                <div class="caption-text"><span>{{pple.userName | titlecase}} {{pple.phone | titlecase}}</span></div>
                                 <a class="matual-friends" data-toggle="modal" data-target="#mutualPeople"(click)="getSelectedPeople(pple.mutualFriends)"><span>{{pple.mutualFriends.length === 0 ? 'No' : pple.mutualFriends.length}} mutual {{pple.mutualFriends.length === 1? 'friend' : 'friends'}}</span></a>
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                                     <img *ngIf="!mutual?.img?.url" class="friend-img" src="assets/user.png" alt="friend-image">
                                     <img *ngIf="mutual?.img?.url" class="friend-img" [src]="mutual?.img?.url" alt="friend-image">
                                     <div class="friend-caption">
-                                        <div class="caption-text"><span>{{mutual?.firstName | titlecase}} {{mutual?.lastName | titlecase}}</span></div>
+                                        <div class="caption-text"><span>{{mutual?.userName | titlecase}} {{mutual?.phone | titlecase}}</span></div>
                                         <a class="matual-friends"><span>{{mutual?.friends?.length}}</span></a>
                                     </div>
                                 </div>

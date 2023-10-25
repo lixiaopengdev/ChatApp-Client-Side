@@ -4,6 +4,7 @@ import {animate, group, style, transition, trigger} from '@angular/animations';
 import {ActivatedRoute} from '@angular/router';
 import {SocketService} from '../../Services/socket-io/socket.service';
 import {Observable, Subscription} from 'rxjs';
+import { Template } from '@angular/compiler/src/render3/r3_ast';
 
 declare const $: any;
 
@@ -66,8 +67,8 @@ export class ChatDetailsComponent implements OnInit, OnDestroy {
     } else {
       this.socket.emit('privateMessage', {
         messageData: {
-          firstName: this.socket.userContainer.firstName,
-          lastName: this.socket.userContainer.lastName,
+          userName: this.socket.userContainer.userName,
+          phone: this.socket.userContainer.phone,
           message: this.currentMessage,
           to: this.socket.userContainer._id === this.socket.chatRoomContainer.chatRoom.firstUser._id ? this.socket.chatRoomContainer.chatRoom.secondUser._id : this.socket.chatRoomContainer.chatRoom.firstUser._id
         }, userToken: this.socket.token
@@ -98,6 +99,8 @@ export class ChatDetailsComponent implements OnInit, OnDestroy {
 
   listenToUnSeenMessages(): void {
     this.socket.listen('setUnseenMessagesToTrue').subscribe(res => {
+      console.log('setUnseenMessagesToTrue 102')
+      console.log(res)
       if (res['room'] === this.currentRoomId && res['to'] === this.socket.userContainer._id) {
         res['messages'].forEach(message => {
           console.log(message);

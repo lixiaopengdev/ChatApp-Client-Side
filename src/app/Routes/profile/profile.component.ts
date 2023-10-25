@@ -89,10 +89,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
     userData: VisitedProfile = {
         age: null,
         gender: '',
-        firstName: '',
-        lastName: '',
+        userName: '',
+        phone: '',
         bio: '',
-        country: ''
+        city: ''
     };
     constructor(private activated: ActivatedRoute, private profile: ProfileService, private friend: FreindsDetailsService, public socket: SocketService) {
         this.activated.params.subscribe(res => {
@@ -145,8 +145,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
     passUserData(data): void {
         const newEditData = {...data};
-        const {firstName, lastName, age, bio, country, gender } = newEditData;
-        this.userData = {firstName, lastName, age, bio, country, gender};
+        const {userName, phone, age, bio, city, gender } = newEditData;
+        this.userData = {userName, phone, age, bio, city, gender};
         console.log(this.userData);
     }
 

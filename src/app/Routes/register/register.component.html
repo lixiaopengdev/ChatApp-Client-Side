@@ -15,18 +15,18 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <div class="chatsapp-input">
-                                            <input type="text" formControlName="firstName"
+                                            <input type="text" formControlName="userName"
                                                    class="login-form-control uk-box-shadow-small"
                                                    placeholder="First name">
                                             <i class="fa fa-user-circle login-icon" aria-hidden="true"></i>
                                             <i class="fa fa-user-circle login-icon-danger" aria-hidden="true"
-                                               *ngIf="registerForm.controls.firstName.touched && registerForm.controls.firstName.invalid"></i>
+                                               *ngIf="registerForm.controls.userName.touched && registerForm.controls.userName.invalid"></i>
                                             <div class="flexable-div"></div>
                                             <div class="flexable-div-danger"
-                                                 *ngIf="registerForm.controls.firstName.touched && registerForm.controls.firstName.invalid"></div>
+                                                 *ngIf="registerForm.controls.userName.touched && registerForm.controls.userName.invalid"></div>
                                         </div>
                                         <small class="uk-text-danger" @scaleIn
-                                               *ngIf="registerForm.controls.firstName.touched && registerForm.controls.firstName.invalid">
+                                               *ngIf="registerForm.controls.userName.touched && registerForm.controls.userName.invalid">
                                             <span> First name is required & mustn't contain any numbers </span> <i
                                                 class="fa fa-exclamation-circle mx-2" aria-hidden="true"></i></small>
                                     </div>
@@ -34,18 +34,18 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <div class="chatsapp-input">
-                                            <input type="text" formControlName="lastName"
+                                            <input type="text" formControlName="phone"
                                                    class="login-form-control uk-box-shadow-small"
                                                    placeholder="Last name">
                                             <i class="fa fa-user-circle login-icon" aria-hidden="true"></i>
                                             <i class="fa fa-user-circle login-icon-danger" aria-hidden="true"
-                                               *ngIf="registerForm.controls.lastName.touched && registerForm.controls.lastName.invalid"></i>
+                                               *ngIf="registerForm.controls.phone.touched && registerForm.controls.phone.invalid"></i>
                                             <div class="flexable-div"></div>
                                             <div class="flexable-div-danger"
-                                                 *ngIf="registerForm.controls.lastName.touched && registerForm.controls.lastName.invalid"></div>
+                                                 *ngIf="registerForm.controls.phone.touched && registerForm.controls.phone.invalid"></div>
                                         </div>
                                         <small class="uk-text-danger" @scaleIn
-                                               *ngIf="registerForm.controls.lastName.touched && registerForm.controls.lastName.invalid">
+                                               *ngIf="registerForm.controls.phone.touched && registerForm.controls.phone.invalid">
                                             <span> Last name is required & mustn't contain any numbers </span> <i
                                                 class="fa fa-exclamation-circle mx-2" aria-hidden="true"></i></small>
                                     </div>
